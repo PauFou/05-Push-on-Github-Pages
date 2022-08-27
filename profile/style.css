@@ -1,3 +1,57 @@
+.video-container{
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+@media (max-width: 960px) {
+  /* Pour un écran < 960px, cette classe CSS s'applique */
+  .container {
+    width: 700px;
+  }
+}
+
+@media (max-width: 720px) {
+  /* Pour un écran < 720px, cette classe CSS s'applique */
+  .container {
+    width: 500px;
+  }
+}
+
+@media (max-width: 540px) {
+  /* Pour un écran < 540px, cette classe CSS s'applique */
+  .container {
+    width: 300px;
+  }
+}
+@media (min-aspect-ratio: 16/9) {
+  .video-container iframe {
+    /* height = 100 * (9 / 16) = 56.25 */
+    height: 56.25vw;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .video-container iframe {
+    /* width = 100 / (9 / 16) = 177.777777 */
+    width: 177.78vh;
+  }
+}
+
+iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+}
 
 body {
   background: #fffbfb;
@@ -9,10 +63,6 @@ body {
   line-height: 32px;
 }
 
-#img-rounded {
-  border-radius: 50%;
-  width: 200px;
-}
 
 h1 {
   color: #55393c;
@@ -30,11 +80,64 @@ h2 {
   width: 700px;
   box-shadow: 0px 10px 30px rgb(0 0 0 / 10%);
   margin: 20px auto;
-  background-color: white;
+  background-color: rgb(255, 255, 255);opacity:0.9;;
   border-radius: 4px;
   padding: 40px;
   text-align: center;
+}
+.white-box:hover {
+  animation: multi-color 1s infinite alternate;
+}
 
+@keyframes multi-color {
+  0%  {
+    background-color: red;
+  }
+  25%  {
+    background-color: yellow;
+  }
+  50%  {
+    background-color: green;
+  }
+  75%  {
+    background-color: black;
+  }
+  100% {
+    background-color: pink;
+  }
+}
+
+#img-rounded {
+  width: 200px;
+  height: 200px;
+  background-color: coral;
+  animation: square-to-circle 2s infinite alternate;
+}
+
+@keyframes square-to-circle {
+  0%  {
+    border-radius:0 0 0 0;
+    background:coral;
+
+  }
+  25%  {
+    border-radius:10% 10% 10% 10%;
+    background:darksalmon;
+
+  }
+  50%  {
+    border-radius:25% 25% 25% 25%;
+    background:indianred;
+
+  }
+  75%  {
+    border-radius:40% 40% 40% 40%;
+    background:lightcoral;
+  }
+  100% {
+    border-radius:50%;
+    background:darksalmon;
+  }
 }
 
 a {
@@ -57,6 +160,16 @@ ul {
   background-color: rgba(94, 24, 24 / 10%);
   padding: 8px;
   border-radius: 4px;
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 .footer i:hover{
   background-color: rgba(255, 255, 255, 0.102);opacity:0.4;
@@ -67,7 +180,7 @@ ul {
   background-color: rgb(94, 24, 24);
   padding: 16px;
   border-radius: 4px;
-  margin-top: 100px;
+  margin: 0px;
   color: aliceblue;
 }
 
